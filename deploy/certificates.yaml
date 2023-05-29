@@ -1,0 +1,24 @@
+  apiVersion: networking.gke.io/v1
+  kind: ManagedCertificate
+  metadata:
+    name: cloudberry-ai-certificate
+  spec:
+    domains:
+      - cloudberryai.com
+---
+  apiVersion: networking.gke.io/v1
+  kind: ManagedCertificate
+  metadata:
+    name: cloudberry-ai-uk-certificate
+  spec:
+    domains:
+      - cloudberryai.co.uk
+---
+  apiVersion: networking.gke.io/v1
+  kind: ManagedCertificate
+  metadata:
+    name: cloudberry-ai-fi-certificate
+  spec:
+    domains:
+      - cloudberryai.fi
+---
