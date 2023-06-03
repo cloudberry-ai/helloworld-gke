@@ -2,20 +2,25 @@
 apiVersion: "networking.k8s.io/v1"
 kind: "Ingress"
 metadata:
-  name: "cloudberry-k8s-ingress"
+  name: "cloudberry-ingress"
   namespace: "default"
   annotations:
     networking.gke.io/managed-certificates: "cloudberry-ai-certificate,cloudberry-ai-uk-certificate,cloudberry-ai-fi-certificate"
 spec:
+  defaultBackend:
+    service:
+      name: "assets-proxy"
+      port:
+        number: 80
   rules:
-  - host: cloudberryai.com
-    http:
+  - http:
       paths:
-      - pathType: ImplementationSpecific
+      - path: "/assets"
         backend:
           service:
-            name: "hello"
+            name: "assets-proxy"
             port:
               number: 80
+        pathType: "ImplementationSpecific"
 status:
   loadBalancer: {}
